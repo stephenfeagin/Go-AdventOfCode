@@ -10,8 +10,8 @@ import (
 
 var (
 	helpPattern = regexp.MustCompile(`-h`)
-	yearPattern = regexp.MustCompile(`^201\d$`)
-	dayPattern  = regexp.MustCompile(`^[0123]?\d$`)
+	yearPattern = regexp.MustCompile(`^201[5-8]$`)
+	dayPattern  = regexp.MustCompile(`^[012]?\d$|^3[01]$`)
 )
 
 func main() {
@@ -22,12 +22,12 @@ func main() {
 	year, day := os.Args[1], os.Args[2]
 
 	if !yearPattern.MatchString(year) {
-		fmt.Println("Invalid <year>.")
+		fmt.Println("Invalid <year>. Must be in [2015..2018]")
 		os.Exit(1)
 	}
 
 	if !dayPattern.MatchString(day) {
-		fmt.Println("Invalid <day>.")
+		fmt.Println("Invalid <day>. Must be in [1..31].")
 		os.Exit(1)
 	}
 
