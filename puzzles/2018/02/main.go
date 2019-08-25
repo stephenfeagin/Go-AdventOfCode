@@ -10,15 +10,15 @@ import (
 
 // Solve prints out solutions for the puzzle
 func Solve(fname string) {
-	boxes := readInput(fname)
-	solution1 := part1(boxes)
-	solution2 := part2(boxes)
+	boxes := ReadInput(fname)
+	solution1 := Part1(boxes)
+	solution2 := Part2(boxes)
 
 	fmt.Printf("Part 1: %d\nPart 2: %s\n", solution1, solution2)
 }
 
-// readInput parses the puzzle's input.txt file
-func readInput(fname string) []string {
+// ReadInput parses the puzzle's input.txt file
+func ReadInput(fname string) []string {
 	file, err := os.Open(fname)
 	if err != nil {
 		log.Fatal(err)
@@ -34,7 +34,8 @@ func readInput(fname string) []string {
 	return ids
 }
 
-func part1(boxes []string) int {
+// Part1 solves: What is the checksum for your list of box IDs?
+func Part1(boxes []string) int {
 	twos := 0
 	threes := 0
 	for _, box := range boxes {
@@ -58,7 +59,8 @@ func part1(boxes []string) int {
 	return twos * threes
 }
 
-func part2(boxes []string) string {
+// Part2 solves: What letters are common between the two correct box IDs?
+func Part2(boxes []string) string {
 	// Make an empty string slice for results
 	results := make([]string, 0)
 

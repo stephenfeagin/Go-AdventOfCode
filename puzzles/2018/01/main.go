@@ -11,15 +11,15 @@ import (
 
 // Solve prints out solutions for the puzzle
 func Solve(fname string) {
-	freqs := readInput(fname)
-	solution1 := part1(freqs)
-	solution2 := part2(freqs)
+	freqs := ReadInput(fname)
+	solution1 := Part1(freqs)
+	solution2 := Part2(freqs)
 
 	fmt.Printf("Part 1: %d\nPart 2: %d\n", solution1, solution2)
 }
 
-// readInput parses the puzzle's input.txt file
-func readInput(fname string) []int {
+// ReadInput parses the puzzle's input.txt file
+func ReadInput(fname string) []int {
 	file, err := os.Open(fname)
 	if err != nil {
 		log.Fatal(err)
@@ -40,9 +40,9 @@ func readInput(fname string) []int {
 	return freqs
 }
 
-// Starting with a frequency of zero, what is the resulting frequency after all of the changes in
-// frequency have been applied?
-func part1(freqs []int) int {
+// Part1 solves: Starting with a frequency of zero, what is the resulting frequency after all of the
+// changes in frequency have been applied?
+func Part1(freqs []int) int {
 	var currentFreq int
 	for _, i := range freqs {
 		currentFreq += i
@@ -50,8 +50,8 @@ func part1(freqs []int) int {
 	return currentFreq
 }
 
-// What is the first frequency your device reaches twice?
-func part2(freqs []int) int {
+// Part2 solves: What is the first frequency your device reaches twice?
+func Part2(freqs []int) int {
 	results := make([]int, len(freqs))
 	results[0] = 0
 	nextFreq := 0
