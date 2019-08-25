@@ -70,3 +70,7 @@ func part2(freqs []int) int {
 		}
 	}
 }
+
+// I include main() so that go doesn't yell about a main package having no main() function
+func main() {
+}
