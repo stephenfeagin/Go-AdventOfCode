@@ -40,6 +40,8 @@ func readInput(fname string) []int {
 	return freqs
 }
 
+// Starting with a frequency of zero, what is the resulting frequency after all of the changes in
+// frequency have been applied?
 func part1(freqs []int) int {
 	var currentFreq int
 	for _, i := range freqs {
@@ -48,6 +50,7 @@ func part1(freqs []int) int {
 	return currentFreq
 }
 
+// What is the first frequency your device reaches twice?
 func part2(freqs []int) int {
 	results := make([]int, len(freqs))
 	results[0] = 0
