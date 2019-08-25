@@ -42,9 +42,17 @@ func main() {
 
 	// Try to open a plugin at puzzles/year/day
 	pluginPath := filepath.Join(dir, year+day+".so")
+
+	// Make sure that the file exists
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		fmt.Println("No solution available for", year, day)
+		os.Exit(1)
+	}
+
 	p, err := plugin.Open(pluginPath)
 	if err != nil {
-		fmt.Printf("No solution available for %s %s\n", year, day)
+		fmt.Printf("No such file %s%s.so\n", year, day)
+		fmt.Println("Try running ./build_plugin", year, day)
 		os.Exit(1)
 	}
 
