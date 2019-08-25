@@ -11,15 +11,15 @@ import (
 
 // Solve prints out solutions for the puzzle
 func Solve(fname string) {
-	freqs := ReadInput(fname)
-	solution1 := Part1(freqs)
-	solution2 := Part2(freqs)
+	freqs := readInput(fname)
+	solution1 := part1(freqs)
+	solution2 := part2(freqs)
 
 	fmt.Printf("Part 1: %d\nPart 2: %d\n", solution1, solution2)
 }
 
-// ReadInput parses the puzzle's input.txt file
-func ReadInput(fname string) []int {
+// readInput parses the puzzle's input.txt file
+func readInput(fname string) []int {
 	file, err := os.Open(fname)
 	if err != nil {
 		log.Fatal(err)
@@ -40,8 +40,7 @@ func ReadInput(fname string) []int {
 	return freqs
 }
 
-// Part1 solves Part 1
-func Part1(freqs []int) int {
+func part1(freqs []int) int {
 	var currentFreq int
 	for _, i := range freqs {
 		currentFreq += i
@@ -49,8 +48,7 @@ func Part1(freqs []int) int {
 	return currentFreq
 }
 
-// Part2 solves Part 2
-func Part2(freqs []int) int {
+func part2(freqs []int) int {
 	results := make([]int, len(freqs))
 	results[0] = 0
 	nextFreq := 0

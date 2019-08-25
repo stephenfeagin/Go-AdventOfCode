@@ -10,11 +10,13 @@ import (
 
 var (
 	helpPattern = regexp.MustCompile(`-h`)
-	yearPattern = regexp.MustCompile(`^201[5-8]$`)
-	dayPattern  = regexp.MustCompile(`^[012]?\d$|^3[01]$`)
+	yearPattern = regexp.MustCompile(`^201[5-8]$`)         // Puzzles only exist for 2015-2018
+	dayPattern  = regexp.MustCompile(`^[012]?\d$|^3[01]$`) // Only 1-31 allowed
 )
 
 func main() {
+
+	// Must be used with 2 arguments or with the first arg containing '-h'
 	if len(os.Args) != 3 || helpPattern.MatchString(os.Args[1]) {
 		exitWithUsage()
 	}
@@ -31,12 +33,14 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Directories are zero-padded for days less than 10
 	if len(day) == 1 {
 		day = "0" + day
 	}
 
 	dir := filepath.Join("puzzles", year, day)
 
+	// Try to open a plugin at puzzles/year/day
 	pluginPath := filepath.Join(dir, year+day+".so")
 	p, err := plugin.Open(pluginPath)
 	if err != nil {
@@ -44,19 +48,25 @@ func main() {
 		os.Exit(1)
 	}
 
+	// My AOC plugins implement a Solve() function
 	symbol, err := p.Lookup("Solve")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
+	// We have to provide a type assertion to resolve the symbol. I use Solve(fname string) for the
+	// puzzle input
 	solve, ok := symbol.(func(string))
 	if !ok {
 		fmt.Println("Plugin has no `Solve` function")
 		os.Exit(1)
 	}
 
+	// Get the puzzle input file
 	inputFile := filepath.Join(dir, "input.txt")
+
+	// Solve() prints the solutions and returns nothing
 	solve(inputFile)
 }
 
