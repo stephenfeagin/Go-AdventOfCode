@@ -67,3 +67,12 @@ In this example, removing all C/c units was best, producing the answer 4.
 What is the length of the shortest polymer you can produce by removing all units
 of exactly one type and fully reacting the result?
 ```
+
+## Notes
+
+I had a lot of trouble getting this one to come out right. I had already solved it
+in Python, so I knew what the answers should be. My different attempts always
+compiled, but always with the wrong answers, and I couldn't (and still can't) 
+understand why. In the end, I patterned my answer after a solution by Reddit user 
+[CHAOSFISCH](https://www.reddit.com/r/adventofcode/comments/a3912m/2018_day_5_solutions/eb4w63e/).
+Many thanks to CHAOSFISCH!
