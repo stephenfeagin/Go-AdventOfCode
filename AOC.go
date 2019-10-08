@@ -11,7 +11,7 @@ import (
 var (
 	helpPattern = regexp.MustCompile(`-h`)
 	yearPattern = regexp.MustCompile(`^201[5-8]$`)         // Puzzles only exist for 2015-2018
-	dayPattern  = regexp.MustCompile(`^[012]?\d$|^3[01]$`) // Only 1-31 allowed
+	dayPattern  = regexp.MustCompile(`^[01]?\d$|^2[0-5]$`) // Only 1-25 allowed
 )
 
 func main() {
