@@ -29,7 +29,7 @@ func main() {
 	}
 
 	if !dayPattern.MatchString(day) {
-		fmt.Println("Invalid <day>. Must be in [1..31].")
+		fmt.Println("Invalid <day>. Must be in [1..25].")
 		os.Exit(1)
 	}
 
