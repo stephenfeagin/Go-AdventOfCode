@@ -26,4 +26,6 @@ for YEAR in *; do
         # cd back up to the year dir
         cd ..
     done
+    # cd back into the puzzles dir
+    cd ..
 done
